@@ -1,0 +1,39 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+  namespace: expense
+spec:
+  replicas: 2
+  selector: # labels are used as selectors
+    app: frontend
+    tier: web
+    project: expense
+  ports:
+  - protocol: TCP
+    port: 80 # service port
+    targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:124355635734:certificate/67a255e9-5b52-4e26-94a1-202cfc9d9f7e
+    alb.ingress.kubernetes.io/group.name: expense-bhavya
+spec:
+  ingressClassName: alb
+  rules:
+  - host: "expense.somisettibhavya.life"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        frontend:
+          service:
+            name: frontend
+            port:
+              number: 80
