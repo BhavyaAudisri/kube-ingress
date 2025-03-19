@@ -32,7 +32,7 @@ spec:
       paths:
       - pathType: Prefix
         path: "/"
-        frontend:
+        backend:
           service:
             name: frontend
             port:
