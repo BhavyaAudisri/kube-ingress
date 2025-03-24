@@ -2,4 +2,4 @@ deployment:
   replicas: 2
   version: 1.0.0
 configmap:
-  db_host: mysql.somisettibhavya.life
+  db_host: mysql
