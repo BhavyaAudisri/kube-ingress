@@ -26,7 +26,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:124355635734:certificate/653a16c4-194d-41ad-81e0-727418e558f3
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:124355635734:certificate/fa751aaa-5f3f-4110-aaa9-cdaa49335928
     alb.ingress.kubernetes.io/group.name: expense-bhavya
 spec:
   ingressClassName: alb
